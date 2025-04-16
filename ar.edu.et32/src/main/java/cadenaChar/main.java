@@ -27,6 +27,6 @@ public class main {
 		palabra.split("K"); // vec[] => {"Lin", "evin"}
 		palabra.substring(2, 4); // Linkevin -> nKev
 		
-		
+		System.out.print("Hola");
 	}
 }
