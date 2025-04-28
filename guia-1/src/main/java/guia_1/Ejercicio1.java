@@ -64,6 +64,7 @@ public class Ejercicio1 {
 		ps.println(tempCelsius);
 	}
 	
+	//Ejercicio 1E
 	public static void conversionTiempo(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
         ps.print("Ingrese el tiempo en segundos: ");
         float totalSegundos = Float.parseFloat(br.readLine());
@@ -77,6 +78,7 @@ public class Ejercicio1 {
         ps.println(dias + " días, " + horas + " horas, " + minutos + " minutos, " + segundos + " segundos.");
     }
 	
+	// Ejercicio F
 	public static void calcularPlanes(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
         ps.print("Ingrese el precio del artículo: ");
         float precio = Float.parseFloat(br.readLine());
@@ -115,6 +117,8 @@ public class Ejercicio1 {
         ps.println("Cuotas 5 a 8: $" + cuotaPlan4SegundaParte);
     } 
 	
+	
+	// Ejercicio 1G
 	public static void mostrarMesNacimiento(PrintStream ps, BufferedReader br) throws IOException {
         ps.print("Ingrese su signo zodiacal: ");
         String signo = br.readLine().toLowerCase();
