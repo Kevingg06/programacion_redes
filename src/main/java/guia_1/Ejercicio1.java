@@ -9,45 +9,43 @@ public class Ejercicio1 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		PrintStream ps = new PrintStream(System.out);
-		PrintStream psErr = new PrintStream(System.err);
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		calcularSueldo(ps, br);
-		calcularAnguloRestante(ps, br);
-		calcularPerimetroCuadrado(ps, br);
-		conversionTemperatura(ps, br);
+		calcularSueldo(ps);
+		calcularAnguloRestante(ps);
+		calcularPerimetroCuadrado(ps);
+		conversionTemperatura(ps);
 
 	}
 
 	// Ejercicio 1A
-	public static void calcularSueldo(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void calcularSueldo(PrintStream ps) throws NumberFormatException, IOException {
 
 		ps.print("Ingrese el precio de su hora de trabajo: ");
-		int precioHora = Integer.parseInt(br.readLine());
+		int precioHora = Integer.parseInt(LineReader.leerLinea());
 
 		ps.print("Ingrese cantidad de horas de trabajo: ");
-		int horasTrabajadas = Integer.parseInt(br.readLine());
+		int horasTrabajadas = Integer.parseInt(LineReader.leerLinea());
 		
 		ps.println(horasTrabajadas * precioHora);
 	}
 
 	// Ejercicio 1B
-	public static void calcularAnguloRestante(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void calcularAnguloRestante(PrintStream ps) throws NumberFormatException, IOException {
 		
 		ps.print("Ingrese del primer angulo: ");
-		float angulo1 = Float.parseFloat(br.readLine());
+		float angulo1 = Float.parseFloat(LineReader.leerLinea());
 
 		ps.print("Ingrese del segundo angulo: ");
-		float angulo2 = Float.parseFloat(br.readLine());
+		float angulo2 = Float.parseFloat(LineReader.leerLinea());
 		
 		float total = 180;
 		ps.println(total - (angulo1 + angulo2));
 	}
 	
 	// Ejercicio 1C
-	public static void calcularPerimetroCuadrado(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void calcularPerimetroCuadrado(PrintStream ps) throws NumberFormatException, IOException {
 		ps.print("Ingrese area del cuadrado: ");
-		float area = Float.parseFloat(br.readLine());
+		float area = Float.parseFloat(LineReader.leerLinea());
 		
 		double perimetro = 4 * Math.sqrt(area);
 		
@@ -55,9 +53,9 @@ public class Ejercicio1 {
 	}
 	
 	// Ejercicio 1D
-	public static void conversionTemperatura(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void conversionTemperatura(PrintStream ps) throws NumberFormatException, IOException {
 		ps.print("Ingrese temperatura en Fahrenheit: ");
-		float tempFahrenheit = Float.parseFloat(br.readLine());
+		float tempFahrenheit = Float.parseFloat(LineReader.leerLinea());
 		
 		float tempCelsius = (tempFahrenheit - 32) * (5.0f/9.0f);
 		
@@ -65,9 +63,9 @@ public class Ejercicio1 {
 	}
 	
 	//Ejercicio 1E
-	public static void conversionTiempo(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void conversionTiempo(PrintStream ps) throws NumberFormatException, IOException {
         ps.print("Ingrese el tiempo en segundos: ");
-        float totalSegundos = Float.parseFloat(br.readLine());
+        float totalSegundos = Float.parseFloat(LineReader.leerLinea());
 
         
         float dias = totalSegundos / 86400;
@@ -79,9 +77,9 @@ public class Ejercicio1 {
     }
 	
 	// Ejercicio F
-	public static void calcularPlanes(PrintStream ps, BufferedReader br) throws NumberFormatException, IOException {
+	public static void calcularPlanes(PrintStream ps) throws NumberFormatException, IOException {
         ps.print("Ingrese el precio del artículo: ");
-        float precio = Float.parseFloat(br.readLine());
+        float precio = Float.parseFloat(LineReader.leerLinea());
 
 
         float precioPlan1 = precio - (precio * 0.10f);
@@ -119,11 +117,11 @@ public class Ejercicio1 {
 	
 	
 	// Ejercicio 1G
-	public static void mostrarMesNacimiento(PrintStream ps, BufferedReader br) throws IOException {
+	public static void mostrarMesNacimiento(PrintStream ps) throws IOException {
         ps.print("Ingrese su signo zodiacal: ");
-        String signo = br.readLine().toLowerCase();
+        String signo = LineReader.leerLinea().toLowerCase();
 
-        // Determinamos el mes aproximado según el signo
+        
         switch (signo) {
             case "aries":
                 ps.println("Mes de nacimiento aproximado: Marzo - Abril");
@@ -166,5 +164,6 @@ public class Ejercicio1 {
                 break;
         }
     }
+	
 }
 
