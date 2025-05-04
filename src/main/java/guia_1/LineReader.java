@@ -8,7 +8,7 @@ public class LineReader {
 	    StringBuilder resultado = new StringBuilder();
 	    int caracter = System.in.read();
 	    
-	    while (caracter != 13) {
+	    while (caracter != 13 && caracter != 10) {
 	        resultado.append((char) caracter); 
 	        caracter = System.in.read();
 	    }

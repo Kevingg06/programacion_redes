@@ -10,17 +10,13 @@ public class Ejercicio1 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		PrintStream ps = new PrintStream(System.out);
 
-		calcularSueldo(ps);
-		calcularAnguloRestante(ps);
-		calcularPerimetroCuadrado(ps);
-		conversionTemperatura(ps);
-
 	}
 
 	// Ejercicio 1A
 	public static void calcularSueldo(PrintStream ps) throws NumberFormatException, IOException {
 
 		ps.print("Ingrese el precio de su hora de trabajo: ");
+        ps.flush();
 		int precioHora = Integer.parseInt(LineReader.leerLinea());
 
 		ps.print("Ingrese cantidad de horas de trabajo: ");
