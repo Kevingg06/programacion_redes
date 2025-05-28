@@ -131,7 +131,7 @@ public class Archivos {
 	 */
 	public void crearFileConBuffer(File f, String texto) {
 		FileWriter fw = null; 
-		BufferedWriter bw = null;//escritor
+		BufferedWriter bw = null; //escritor
 		
 		try {
 			fw = new FileWriter(f , false); // true = append
