@@ -8,54 +8,55 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Resolucion {
-	
-	public static void main(String[] args) {
-		menuInfinito();
-	}
 
-	public static void menuInfinito() {
+    public static void main(String[] args) {
+        Files.formatFile();
+        menuInfinito();
+    }
 
-		PrintStream ps = new PrintStream(System.out);
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int input = 0;
+    public static void menuInfinito() {
 
-		try {
-			while (input != 4) {
+        PrintStream ps = new PrintStream(System.out);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int input = 0;
 
-				ps.print( Colors.ANSI_PURPLE  + "        1.       Agregar datos nuevos al archivo de texto.\r\n"
-						+ "        2.       Eliminar datos del archivo de texto.\r\n"
-						+ "        3.       Mostrar los datos existentes.\r\n" + "        " 
-						+         "4.       Salir. \n" + Colors.ANSI_RESET);
+        try {
+            while (input != 4) {
 
-				ps.print("Seleccione una opción: ");
+                ps.print( Colors.ANSI_PURPLE  + "        1.       Agregar datos nuevos al archivo de texto.\r\n"
+                        + "        2.       Eliminar datos del archivo de texto.\r\n"
+                        + "        3.       Mostrar los datos existentes.\r\n" + "        "
+                        +         "4.       Salir. \n" + Colors.ANSI_RESET);
 
-				input = Integer.parseInt(br.readLine().trim());
+                ps.print("Seleccione una opción: ");
 
-				switch (input) {
-				case 1:
-					ps.println("imprimir 1");
-					break;
+                input = Integer.parseInt(br.readLine().trim());
 
-				case 2:
-					Files.mostrarContenidoFile();
-					Files.eliminarElemento();
-					break;
+                switch (input) {
+                    case 1:
+                        ps.println("imprimir 1");
+                        break;
 
-				case 3:
-					Files.mostrarContenidoFile();
-					break;
+                    case 2:
+                        Files.mostrarContenidoFile();
+                        Files.modificarArchivoConLinkedList();
+                        break;
 
-				case 4:
-					ps.println(Colors.ANSI_RED + "\n Saliendo del programa..." + Colors.ANSI_RESET);
-					break;
+                    case 3:
+                        Files.mostrarContenidoFile();
+                        break;
 
-				default:
-					ps.println("Numero invalido");
-				}
+                    case 4:
+                        ps.println(Colors.ANSI_RED + "\n Saliendo del programa..." + Colors.ANSI_RESET);
+                        break;
 
-			}
-		} catch (IOException e) {
-			Logger.getLogger(Files.class.getName()).log(Level.SEVERE, null, e);
-		}
-	}
+                    default:
+                        ps.println("Numero invalido");
+                }
+
+            }
+        } catch (IOException e) {
+            Logger.getLogger(Files.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }
