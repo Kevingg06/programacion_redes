@@ -1,5 +1,6 @@
 package prueba;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -152,14 +153,13 @@ public class Files {
         BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
         ps.printf(Colors.ANSI_GREEN + "Ingrese la línea a eliminar: ");
 
-        try(BufferedReader br = new BufferedReader(new FileReader(fileModified)))
-        {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileModified))) {
             int input = Integer.parseInt(br2.readLine().trim());
-            String lineas = ""; String EOF = null;
+            String lineas = "";
+            String EOF = null;
             int count = 1;
-            while( (lineas = br.readLine()) != EOF )
-            {
-                if(input != count){
+            while ((lineas = br.readLine()) != EOF) {
+                if (input != count) {
                     textoCompleto.add(lineas);
                 }
                 count++;
@@ -169,9 +169,8 @@ public class Files {
             Logger.getLogger(Files.class.getName()).log(Level.WARNING, null, e);
         }
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileModified)))
-        {
-            for( String linea : textoCompleto ){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileModified))) {
+            for (String linea : textoCompleto) {
                 bw.write(linea);
                 bw.newLine();
             }
@@ -181,32 +180,43 @@ public class Files {
 
     }
 
-    public static void agregarDatos() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void agregarDatosConLinkedList() {
+        List<String> textoCompleto = new LinkedList<>();
         PrintStream ps = new PrintStream(System.out);
-        boolean notTerminado = true;
-        while (notTerminado) {
+        BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
+
+        String letra = "";
+        String color = "";
+        String animal = "";
+        String objeto = "";
+        String alimento = "";
+        boolean cumplioParametros = false;
+        while (!cumplioParametros) {
             try {
-                ps.printf(Colors.ANSI_GREEN + "Ingrese la letra de juego: ", Colors.ANSI_RESET);
-                String letra = br.readLine().trim();
-                if (!letrasUsadas.contains(letra)) {
-                    ps.printf(Colors.ANSI_GREEN + "Ingrese nuevamente: ", Colors.ANSI_RESET);
-                    String color = br.readLine().trim();
+                ps.printf(Colors.ANSI_BLACK + "Ingrese letra: ");
+                letra = br2.readLine().trim();
 
+                ps.printf(Colors.ANSI_BLUE + "Ingrese color: ");
+                color = br2.readLine().trim();
 
-                    if (Character.toString(color.charAt(0)) == letra) {
+                ps.printf(Colors.ANSI_CYAN + "Ingrese animal: ");
+                animal = br2.readLine().trim();
 
-                        String animal = br.readLine().trim();
-                        if (Character.toString(animal.charAt(0)) == letra) {
-                            String objeto = br.readLine().trim();
-                            if(Character.toString(objeto.charAt(0)) == letra) {
-                                String alimento = br.readLine().trim();
-                                if(Character.toString(alimento.charAt(0)) == letra) {
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                ps.printf(Colors.ANSI_YELLOW + "Ingrese objeto: ");
+                objeto = br2.readLine().trim();
+
+                ps.printf(Colors.ANSI_RED + "Ingrese alimento: " + Colors.ANSI_RESET);
+                alimento = br2.readLine().trim();
+
+                cumplioParametros = false;
+
+                if (!letrasUsadas.contains(letra) ||
+                        Character.toString(color.charAt(0)).equals(letra) ||
+                        Character.toString(animal.charAt(0)).equals(letra) ||
+                        Character.toString(objeto.charAt(0)).equals(letra) ||
+                        Character.toString(alimento.charAt(0)).equals(letra)
+                ) {
+                    cumplioParametros = true;
                 }
 
             } catch (IOException e) {
@@ -215,6 +225,33 @@ public class Files {
 
         }
 
+        Tuti nuevoTuti = new Tuti(letra.toUpperCase(), color, animal, objeto, alimento);
+        letrasUsadas.add(letra.charAt(0));
+        String nuevoDato = nuevoTuti.toCSV();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileModified))) {
+            String lineas = "";
+            String EOF = null;
+
+            while ((lineas = br.readLine()) != EOF) {
+                textoCompleto.add(lineas);
+            }
+            textoCompleto.add(nuevoDato);
+
+        } catch (IOException e) {
+            Logger.getLogger(Files.class.getName()).log(Level.WARNING, null, e);
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileModified))) {
+            for (String linea : textoCompleto) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            Logger.getLogger(Files.class.getName()).log(Level.WARNING, null, e);
+        }
+
     }
+
 
 }
