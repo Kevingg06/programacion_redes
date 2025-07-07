@@ -34,7 +34,7 @@ public class Resolucion {
 
                 switch (input) {
                     case 1:
-                        ps.println("imprimir 1");
+                        Files.agregarDatosConLinkedList();
                         break;
 
                     case 2:
