@@ -338,7 +338,6 @@ public class FileManager {
                         linea.replace(buscar, reemplazar));//(datomodificado)
         }
 
-        // Escribir de nuevo todo el contenido modificado en el archivo original
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(archivoOriginal)))
         {
             for( String linea : textoCompleto ){

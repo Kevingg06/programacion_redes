@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class ColegioManager { // Renamed to avoid conflict if you have a class Colegio
     private Map<String, Integer> alumnosPorNacionalidad;
-    private static final PrintStream PS = PrintStream(System.out);
+    private static final PrintStream PS = new PrintStream(System.out);
 
     public ColegioManager() {
         this.alumnosPorNacionalidad = new HashMap<>();
